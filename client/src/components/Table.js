@@ -1,4 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
+
+
 
 const TableHeader = () => {
   return (
@@ -12,11 +15,18 @@ const TableHeader = () => {
 }
 
 const TableBody = (props) => {
-  const rows = props.NameData.map((row, index) => {
+  const rows =  styled.button`
+  padding: 15px;
+  border: 2px solid green;
+  &:hover {
+    border-color: blue;
+  }`;
+  rows = props.NameData.map((row, index) => {
     return (
       <tr key={index}>
         <td>{row.name}</td>
         <td>
+
           <button type="submit" onClick={() => props.removeName(index)}>Delete</button>
         </td>
       </tr>
