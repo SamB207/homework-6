@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Table from './Table';
 // import Form from './Form';
 import Form from './Form';
+import styled from 'styled-components'
 
 const NameContainer = (props) => {
   const [name, setName] = useState([]);
@@ -67,13 +68,7 @@ const NameContainer = (props) => {
     catch (error){
       console.log(error)
     }
-  }
-
-    useEffect(() =>{
-    if(name.length < 1){
-     fetchNames()
-    } 
-   }, [])
+  } 
   const handleRemove = (index) => {
     const deleteName = [...name];
       deleteName.splice(index, 1);
@@ -90,9 +85,28 @@ const NameContainer = (props) => {
      UpdatesNames()
      fetchNamesUser()
   }
+  const Header = styled.header`
+  align-items: center;
+  background: #0A9E74;
+  padding: 10px 20px;
+  h1{
+    font-weight: 600;
+    colors: #086D86
+  }
+  h3{
+    font-weight: 400;
+    colors: #086D86
+  }
+  p{
+    font-weight: 400;
+    colors: #086D86
+  }
+
+  `;
 
   return (
     <div className="container">
+      <Header>
       <h1>Baby's name list</h1>
       <p>Add a new namess to the table.</p>
       {/*TODO - Add Table Component */}
@@ -103,6 +117,7 @@ const NameContainer = (props) => {
       <h3>Add new name</h3>
       {/*TODO - Add Form Component */}
       < Form onSubmit={handleSubmit}/>
+      </Header>
     </div>
   )
 }
