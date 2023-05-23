@@ -14,8 +14,10 @@
   "resolution":{
     "styled-componets": "^5"
   },
-  "proxy": "http://localhost:8001"
-  ,
+  "option":{
+    "allowedHosts": ["localhost", ".localhost"],
+    "proxy": "http://localhost:8001"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

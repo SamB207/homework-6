@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // import Table from './Table';
 import Table from './Table';
 // import Form from './Form';
@@ -7,6 +7,18 @@ import Form from './Form';
 const NameContainer = (props) => {
   const [name, setName] = useState([]);
 
+  
+  // useEffect(() => {
+  //   fetch("http://localhost:8001/api")
+  //   .then(res =>{
+  //     console.log(res)
+  //   })
+  //   .catch(err =>{
+  //     console.log(err)
+  //   })
+
+
+  //})
   const handleRemove = (index) => {
     const deleteName = [...name];
       deleteName.splice(index, 1);
