@@ -7,27 +7,88 @@ import Form from './Form';
 const NameContainer = (props) => {
   const [name, setName] = useState([]);
 
-  
-  // useEffect(() => {
-  //   fetch("http://localhost:8001/api")
-  //   .then(res =>{
-  //     console.log(res)
-  //   })
-  //   .catch(err =>{
-  //     console.log(err)
-  //   })
+  const fetchNames = async ()=>{
+    try{
+      let response =await fetch('/Names')
+      console.log(response)
+      let data = await response.json()
+      setName(data)
+      console.log(data)
+    }
+    catch (error){
+      console.log(error)
+    }
+  }
+  const fetchNamesUser = async ()=>{
+    try{
+      let response =await fetch('/users/:id')
+      console.log(response)
+      let data = await response.json()
+      console.log(data)
+    }
+    catch (error){
+      console.log(error)
+    }
+  }
+  const PostNames = async(newNames) =>{
+    try{
+      let response = await fetch('/new', {
+        method: 'POST', headers:{ 
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newNames)
+    })
+      console.log(response)
+      let message = await response.text()
+      console.log(message)
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+  const UpdatesNames = async ()=>{
+    try{
+      let response =await fetch('/update/:id')
+      console.log(response)
+      let data = await response.json()
+      console.log(data)
+    }
+    catch (error){
+      console.log(error)
+    }
+  }
+  const deleNames =async()=>{
+    try{
+      let response =await fetch('/delete/:id')
+      console.log(response)
+      let data = await response.json()
+      console.log(data)
+    }
+    catch (error){
+      console.log(error)
+    }
+  }
 
-
-  //})
+    useEffect(() =>{
+    if(name.length < 1){
+     fetchNames()
+    } 
+   }, [])
   const handleRemove = (index) => {
     const deleteName = [...name];
       deleteName.splice(index, 1);
       setName(deleteName);
+      deleNames()
       
   }
 
+
   const handleSubmit = (favName) => {
      setName([...name, favName])
+     PostNames(favName)
+     fetchNames()
+     UpdatesNames()
+     fetchNamesUser()
   }
 
   return (

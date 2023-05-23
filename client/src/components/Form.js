@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Component } from 'react/cjs/react.production.min'
 
 const Form = (props) => {
   const [name, setName] = useState('')
@@ -16,6 +15,7 @@ const Form = (props) => {
     /*
             TODO - Logic for calling props to handle submission and setting state changes
         */
+       
        props.onSubmit({"name": name})
         
            
