@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styled from 'styled-components'
 
 const Form = (props) => {
   const [name, setName] = useState('')
@@ -11,20 +12,21 @@ const Form = (props) => {
   const onFormSubmit = (event) => {
     // to prevent page reload on form submit
     event.preventDefault()
-
-    /*
-            TODO - Logic for calling props to handle submission and setting state changes
-        */
-       
        props.onSubmit({"name": name})
         
            
   }
+  const Input = styled.input`
+  padding:10px 20px;
+  background: #000;
+  border: none;
+  border-radius: 3px;
+`;
 
   return (
     <form>
       <label htmlFor="name">Name</label> <br></br>
-         <input
+         <Input
            type="text"
            name="name"
          onChange ={(handleChange)}/><br></br>

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Table from './Table';
 // import Form from './Form';
 import Form from './Form';
+// import "./style.css";
 import styled from 'styled-components'
 
 const NameContainer = (props) => {
@@ -85,39 +86,51 @@ const NameContainer = (props) => {
      UpdatesNames()
      fetchNamesUser()
   }
-  const Header = styled.header`
-  align-items: center;
-  background: #0A9E74;
-  padding: 10px 20px;
-  h1{
-    font-weight: 600;
-    colors: #086D86
-  }
-  h3{
-    font-weight: 400;
-    colors: #086D86
-  }
-  p{
-    font-weight: 400;
-    colors: #086D86
-  }
+  const styles = {
+    h1Text: {
+      fontWeight: "600",
+     colors: "#086D86",
+    },
+    h3Text:{
+      fontWeight: "400",
+     colors: "#086D86",
+    },
+    pText:{
+      fontWeight: "400",
+     colors: "#086D86",
+    },
 
-  `;
+  };
+
+
+  // const H1= styled.h1`{
+  //   font-weight: 600;
+  //   colors: #086D86
+  // }`;
+  // const H3 = styled.h3`{
+  //   font-weight: 400;
+  //   colors: #086D86
+  // }`;
+  // const P = styled.p`{
+  //   font-weight: 400;
+  //   colors: #086D86
+  // }
+
+  // `;
 
   return (
     <div className="container">
-      <Header>
-      <h1>Baby's name list</h1>
-      <p>Add a new namess to the table.</p>
+      <h1 style={styles.h1Text}>Baby's name list</h1>
+      <p style={styles.pText}>Add a new namess to the table.</p>
       {/*TODO - Add Table Component */}
       < Table NameData ={name} removeName={handleRemove}/>
 
       <br />
 
-      <h3>Add new name</h3>
+      <h3 style={styles.h3Text}>Add new name</h3>
       {/*TODO - Add Form Component */}
       < Form onSubmit={handleSubmit}/>
-      </Header>
+      
     </div>
   )
 }

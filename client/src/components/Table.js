@@ -1,10 +1,16 @@
 import React from 'react'
+// import "./style.css";
 import styled from 'styled-components'
 
-const Button = styled.button`
-border: 2px solid red;
-}`;
-
+// const Button = styled.button`
+// border: 2px solid red;
+// }`;
+const styles = {
+button:{
+  backgroundColor: "#4CAF50",
+  color: "#4CAF50",
+},
+};
 const TableHeader = () => {
   return (
     <thead>
@@ -22,9 +28,8 @@ const TableBody = (props) => {
       <tr key={index}>
         <td>{row.name}</td>
         <td>
-          <Button>
-          <button type="submit" onClick={() => props.removeName(index)}>Delete</button>
-       </Button> </td>
+          <button type="submit" style={styles.button} onClick={() => props.removeName(index)}>Delete</button>
+       </td>
       </tr>
     )
   })
